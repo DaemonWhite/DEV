@@ -1,0 +1,26 @@
+h1 {
+    color: #1848b8 ;
+    font-size: 900;
+}
+
+div {
+    background-color: rgb(220,220,240);
+    text-align: right;
+}
+
+div > strong {
+    background-color: white;
+    font-size: 2em;
+}
+
+p {
+    text-align: center;
+}
+
+span {
+    background-color: lightblue;
+}
+
+a {
+    font-size: 1.5em;
+}
