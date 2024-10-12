@@ -4,6 +4,8 @@
 $SCORE_j1=0;
 $SCORE_j2=0;
 
+$RESULTAT=["pierre", "feuille", "ciseau"];
+
 
 /**
  * Determine qui à gagner au pierre feuille ciseau
@@ -72,16 +74,26 @@ function score(int $winner, int &$SCORE_j1, int &$SCORE_j2) : void {
         $SCORE_j2++;
     }
 }
-
-function demande_joueur() {
-    
+/**
+ * Demande quel main le joueur veut jouer
+ * @return int retourne la main du joueur
+ */
+function demande_joueur() : int {
+    echo "Choisissez votre main :  " . PHP_EOL . "0: PIERRE" . PHP_EOL . "1: FEUILLE" . PHP_EOL . "2: CISEAU" . PHP_EOL;
+    return readline('Que voulez-vous jouer : ');
 }
 
-score(
-    gagnant(0,1),
-    $SCORE_j1,
-    $SCORE_j2
-);
+while ($SCORE_j1 < 3 && $SCORE_j2 < 3) {
+    score(
+        gagnant(demande_joueur(), rand(0,2)),
+        $SCORE_j1,
+        $SCORE_j2
+    );
+    echo PHP_EOL . "SCORE 1 : $SCORE_j1 " . PHP_EOL . "SCORE 2 : $SCORE_j2" . PHP_EOL;
+}
 
-
-echo "SCORE 1 : $SCORE_j1 " . PHP_EOL . "SCORE 2 : $SCORE_j2";
+if ($SCORE_j2 > $SCORE_j1) {
+    echo "L'ordianteur à gagner";
+} else {
+    echo "Le joeu";
+}
